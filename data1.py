@@ -38,12 +38,13 @@ sous_problemes = {
 nombre_touristes = 100000
 
 age = np.random.randint(18, 70, size=nombre_touristes)
-nationalite = np.random.choice(['Maroc', 'Algérie', 'Tunisie', 'Libye', 'Égypte', 'Mauritanie', 'Sénégal', 'Mali', 'Niger', 'Tchad', 'Soudan', 'Érythrée', 'Djibouti', 'Somalie', 'Gambie', 'Guinée-Bissau', 'Guinée', 'Sierra Leone', 'Libéria', 'Côte d\'Ivoire', 'Burkina Faso', 'Ghana', 'Togo', 'Bénin', 'Nigeria', 'Cameroun', 'Tanzanie', 'Kenya', 'Ouganda', 'Rwanda', 'Burundi', 'Seychelles', 'Maurice', 'Comores', 'Madagascar', 'Zambie', 'Zimbabwe', 'Malawi', 'Botswana', 'Namibie', 'Angola', 'République démocratique du Congo', 'République du Congo', 'Gabon', 'Guinée équatoriale'], size=nombre_touristes)
+nationalite = np.random.choice(['Maroc', 'Algérie', 'Tunisie', 'Libye', 'Égypte', 'Mauritanie', 'Sénégal', 'Mali', 'Niger', 'Tchad', 'Soudan', 'Érythrée', 'Djibouti', 'Somalie', 'Gambie', 'Guinée-Bissau', 'Guinée', 'Sierra Leone', 'Libéria', 'Côte d\'Ivoire', 'Burkina Faso', 'Ghana', 'Togo', 'Bénin', 'Nigeria', 'Cameroun', 'Tanzanie', 'Kenya', 'Ouganda', 'Rwanda', 'Burundi', 'Seychelles', 'Maurice', 'Comores', 'Madagascar', 'Zambie', 'Zimbabwe', 'Malawi', 'Botswana', 'Namibie', 'Angola', 'République démocratique du Congo', 'République du Congo', 'Gabon', 'Guinée équatoriale'], p=[0.26, 0.2, 0.12, 0.1, 0.09, 0.02, 0.04, 0.03, 0.02, 0.01, 0.0055, 0.003, 0.019, 0.005, 0.005, 0.0025, 0.002, 0.0021, 0.0022, 0.002, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0019, 0.0025, 0.0023, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025 , 0.0025, 0.0025], size=nombre_touristes)
 # Répartition des sexes
 sexe = np.random.choice(['Homme', 'Femme'], size=nombre_touristes, p=[0.6, 0.4])
-lieu_residence = np.random.choice(['Agadir', 'Casablanca', 'Marrakech', 'Fes', 'Tanger', 'Rabat','Autre'], size=nombre_touristes)
+lieu_residence = np.random.choice(['Agadir', 'Casablanca', 'Marrakech', 'Fes', 'Tanger', 'Rabat','Autre'],p=[0.15,0.25,0.2,0.06,0.07,0.23,0.04],size=nombre_touristes)
 
-problemes_rencontres = np.random.choice(problemes, size=nombre_touristes)
+# Modifiez les probabilités pour déséquilibrer la répartition des problèmes et sous-problèmes
+problemes_rencontres = np.random.choice(problemes, size=nombre_touristes, p=[0.35, 0.25, 0.2, 0.1, 0.1])
 sous_problemes_rencontres = []
 for probleme in problemes_rencontres:
     sous_problemes_rencontres.append(np.random.choice(sous_problemes[probleme]))
