@@ -1,62 +1,64 @@
 import pandas as pd
 import numpy as np
 
-problemes = ['Santé', 'Transport', 'Hébergement', 'Logistique', 'Communication']
-sous_problemes = {
-    "Santé": [
-        "Manque de médicaments essentiels",
-        "Longues files d'attente pour les consultations",
-        "Accès limité aux soins spécialisés",
-        "Autre"
+problems = ['Health', 'Transport', 'Housing', 'Logistics', 'Communication','Security']
+sub_problems = {
+    "Health": [
+        "Lack of essential medications",
+        "Long queues for consultations",
+        "Limited access to specialized care",
+        "Other"
     ],
     "Transport": [
-        "Manque de connexion entre les différents modes de transport",
-        "Conditions de sécurité insuffisantes dans les transports publics",
-        "Accessibilité limitée pour les personnes à mobilité réduite",
-        "Autre"
+        "Lack of connection between different modes of transport",
+        "Insufficient security conditions in public transport",
+        "Limited accessibility for people with reduced mobility",
+        "Other"
     ],
-    "Hébergement": [
-        "Manque d'accessibilité pour les personnes handicapées",
-        "Services clientèle médiocres dans les établissements d'hébergement",
-        "Problèmes d'hygiène et de propreté dans les logements",
-        "Autre"
+    "Housing": [
+        "Lack of accessibility for people with disabilities",
+        "Poor customer service in accommodation establishments",
+        "Hygiene and cleanliness issues in housing",
+        "Other"
     ],
-    "Logistique": [
-        "Absence de signalisation adéquate pour les touristes",
-        "Manque de guides touristiques qualifiés",
-        "Difficultés liées au transport des bagages",
-        "Autre"
+    "Logistics": [
+        "Lack of adequate signage for tourists",
+        "Shortage of qualified tourist guides",
+        "Difficulties related to luggage transport",
+        "Other"
     ],
     "Communication": [
-        "Manque de connexions internet fiables dans certaines régions",
-        "Difficultés de communication avec les services d'urgence",
-        "Problèmes de traduction dans les documents officiels",
-        "Autre"
-    ]
+        "Lack of reliable internet connections in certain regions",
+        "Communication difficulties with emergency services",
+        "Translation problems in official documents",
+        "Other"
+    ],
+    "Security" :["Cybersecurity Concerns","Physical Security Risks","Health and Safety Concerns","Other"]
 }
 
-nombre_touristes = 100000
+number_tourists = 100000
 
-age = np.random.randint(18, 70, size=nombre_touristes)
-nationalite = np.random.choice(['Maroc', 'Algérie', 'Tunisie', 'Libye', 'Égypte', 'Mauritanie', 'Sénégal', 'Mali', 'Niger', 'Tchad', 'Soudan', 'Érythrée', 'Djibouti', 'Somalie', 'Gambie', 'Guinée-Bissau', 'Guinée', 'Sierra Leone', 'Libéria', 'Côte d\'Ivoire', 'Burkina Faso', 'Ghana', 'Togo', 'Bénin', 'Nigeria', 'Cameroun', 'Tanzanie', 'Kenya', 'Ouganda', 'Rwanda', 'Burundi', 'Seychelles', 'Maurice', 'Comores', 'Madagascar', 'Zambie', 'Zimbabwe', 'Malawi', 'Botswana', 'Namibie', 'Angola', 'République démocratique du Congo', 'République du Congo', 'Gabon', 'Guinée équatoriale'], p=[0.26, 0.2, 0.12, 0.1, 0.09, 0.02, 0.04, 0.03, 0.02, 0.01, 0.0055, 0.003, 0.019, 0.005, 0.005, 0.0025, 0.002, 0.0021, 0.0022, 0.002, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0019, 0.0025, 0.0023, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025 , 0.0025, 0.0025], size=nombre_touristes)
-# Répartition des sexes
-sexe = np.random.choice(['Homme', 'Femme'], size=nombre_touristes, p=[0.6, 0.4])
-lieu_residence = np.random.choice(['Agadir', 'Casablanca', 'Marrakech', 'Fes', 'Tanger', 'Rabat','Autre'],p=[0.15,0.25,0.2,0.06,0.07,0.23,0.04],size=nombre_touristes)
+age = np.random.randint(18, 70, size=number_tourists)
+nationality = np.random.choice(['Morocco', 'Algeria', 'Tunisia', 'Libya', 'Egypt', 'Mauritania', 'Senegal', 'Mali', 'Niger', 'Chad', 'Sudan', 'Eritrea', 'Djibouti', 'Somalia', 'Gambia', 'Guinea-Bissau', 'Guinea', 'Sierra Leone', 'Liberia', 'Cote d''Ivoire', 'Burkina Faso', 'Ghana', 'Togo', 'Benin', 'Nigeria', 'Cameroon', 'Tanzania', 'Kenya', 'Uganda', 'Rwanda', 'Burundi', 'Seychelles', 'Mauritius', 'Comoros', 'Madagascar', 'Zambia', 'Zimbabwe', 'Malawi', 'Botswana', 'Namibia', 'Angola', 'Democratic Republic of the Congo', 'Republic of the Congo', 'Gabon', 'Equatorial Guinea'], p=[0.26, 0.2, 0.12, 0.1, 0.09, 0.02, 0.04, 0.03, 0.02, 0.01, 0.0055, 0.003, 0.019, 0.005, 0.005, 0.0025, 0.002, 0.0021, 0.0022, 0.002, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0019, 0.0025, 0.0023, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025, 0.0025 , 0.0025, 0.0025, 0.0025], size=number_tourists)
 
-# Modifiez les probabilités pour déséquilibrer la répartition des problèmes et sous-problèmes
-problemes_rencontres = np.random.choice(problemes, size=nombre_touristes, p=[0.35, 0.25, 0.2, 0.1, 0.1])
-sous_problemes_rencontres = []
-for probleme in problemes_rencontres:
-    sous_problemes_rencontres.append(np.random.choice(sous_problemes[probleme]))
+# Sex distribution
+sex = np.random.choice(['Male', 'Female'], size=number_tourists, p=[0.6, 0.4])
+residence_location = np.random.choice(['Agadir', 'Casablanca', 'Marrakech', 'Fes', 'Tangier', 'Rabat','Other'],p=[0.15,0.25,0.2,0.06,0.07,0.23,0.04],size=number_tourists)
+
+# Modify probabilities to skew the distribution of problems and sub-problems
+encountered_problems = np.random.choice(problems, size=number_tourists, p=[0.30, 0.25, 0.2, 0.08, 0.09,0.08])
+encountered_sub_problems = []
+for problem in encountered_problems:
+    encountered_sub_problems.append(np.random.choice(sub_problems[problem]))
 
 data = {
     'Age': age,
-    'Nationalité': nationalite,
-    'Sexe': sexe,
-    'Lieu de résidence': lieu_residence,
-    'Problème général': problemes_rencontres,
-    'Sous-problème spécifique': sous_problemes_rencontres
+    'Nationality': nationality,
+    'Sex': sex,
+    'Residence Location': residence_location,
+    'General Problem': encountered_problems,
+    'Specific Sub-Problem': encountered_sub_problems
 }
 
 df = pd.DataFrame(data)
-df.to_csv(r"tec\data.csv", index=False)
+df.to_csv(r"DATA_ML\data.csv", index=False)
